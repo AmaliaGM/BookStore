@@ -5,7 +5,7 @@ import './myStyle.css';
 const Navbar = () => (
   <div>
     <div className="nav">
-      <h1 className='SiteName'>Bookstore CMS</h1>
+      <h1 className="SiteName">Bookstore CMS</h1>
       <ul>
         <li>
           <NavLink to="/">BOOKS</NavLink>
