@@ -18,7 +18,7 @@ const AddNewBook = () => (
         htmlFor="Book Author"
         required
       />
-        Book Author
+      Book Author
 
       <button type="button">Add book</button>
     </form>
