@@ -4,22 +4,22 @@ const AddNewBook = () => (
   <div>
     <h2>Add New Book</h2>
     <form>
-      <label>
+      <label htmlFor="BookTitle">
         <input
           type="text"
-          htmlFor="Book Title"
+          id="BookTitle"
           required
         />
         Book Title
       </label>
-      <label>
-        <input
-          type="text"
-          htmlFor="Book Author"
-          required
-        />
+
+      <input
+        type="text"
+        htmlFor="Book Author"
+        required
+      />
         Book Author
-      </label>
+
       <button type="button">Add book</button>
     </form>
 
