@@ -17,12 +17,13 @@
   "rules": {
     "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
     "react/react-in-jsx-scope": "off",
-    "import/no-unresolved": "on",
+    "import/no-unresolved": "off",
     "no-shadow": "off"
   },
   "ignorePatterns": [
     "dist/",
-    "build/",
-    ".js"
-  ]
+    "build/"
+  ],
+  "import/extensions": [
+    0, "always"  ]
 }
