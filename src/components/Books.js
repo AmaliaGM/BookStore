@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import AddNewBook from './BookInput';
+import AddNewBook from './bookInput';
 
 const Books = () => {
   const books = useSelector((store) => store.bookReducer);
