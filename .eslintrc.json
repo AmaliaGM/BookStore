@@ -23,5 +23,8 @@
   "ignorePatterns": [
     "dist/",
     "build/"
-  ]
+  ],
+  "settings": {
+    "import/extensions": [".js", ".jsx", ".ts", ".tsx", ".mjs"]
+  }
 }
