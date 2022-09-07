@@ -1,5 +1,3 @@
-import { createSlice } from '@reduxjs/toolkit';
-
 const initialState = {
   bookTitle: 'Huckleberry Finn Adventures',
   bookAuthor: 'Mark Twain',

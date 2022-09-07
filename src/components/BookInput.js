@@ -10,12 +10,12 @@ const AddNewBook = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const book = { title, author };
+    data = { title, author };
   };
   return (
     <div>
       <h2>Add New Book</h2>
-      <form onSubmit={handleSubmit()}>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="BookTitle">
           <input
             type="text"
@@ -36,10 +36,8 @@ const AddNewBook = () => {
         />
 
         <button onClick={addData} type="submit">Add book</button>
-        <p>{ title }</p>
-        <p>{ author }</p>
+        <p>{ data }</p>
       </form>
-
     </div>
   );
 };

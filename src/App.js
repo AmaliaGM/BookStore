@@ -1,11 +1,11 @@
-import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Books from './components/Books';
 import Categories from './components/Categories';
 import Navbar from './components/Navbar';
-import { connect } from 'react-redux';
 
-function App() {
+export const App = () => {
+  console.log(this.props.data);
   return (
     <>
       <Navbar />
@@ -19,6 +19,10 @@ function App() {
       </div>
     </>
   );
-}
+};
 
-export default App;
+const mapStateToProps = (state) => ({
+  reminders: state.data,
+});
+
+export default connect(mapStateToProps)(App);
