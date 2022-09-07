@@ -5,23 +5,7 @@ export const addBook = (payload) => ({
   payload,
 });
 
-const initialState = [
-  {
-    id: 1,
-    bookTitle: 'The three little pigs',
-    bookAuthor: 'Graham Brothers',
-  },
-  {
-    id: 2,
-    bookTitle: 'Tom Sawyer Adventures',
-    bookAuthor: 'Mark Twain',
-  },
-  {
-    id: 3,
-    bookTitle: 'Huckleberry Finn Adventures',
-    bookAuthor: 'Mark Twain',
-  },
-];
+const initialState = [];
 
 const bookReducer = (state = initialState, action) => {
   switch (action.type) {
