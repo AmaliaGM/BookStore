@@ -14,7 +14,7 @@ const initialState = [];
 const bookReducer = (state = initialState, action) => {
   switch (action.type) {
     case DELETE_BOOK:
-      return { ...state, deleteBook: action.filter };
+      return state.map((book) => (book.id !== action.id));
     case ADD_BOOKS:
       return [...state, action.payload];
     default:
