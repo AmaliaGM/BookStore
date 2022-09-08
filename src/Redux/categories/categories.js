@@ -10,7 +10,6 @@ const categoryReducer = (state = initialState, action) => {
   switch (action.type) {
     case DEFAULT:
       return 'under construction';
-
     default:
       return state;
   }
