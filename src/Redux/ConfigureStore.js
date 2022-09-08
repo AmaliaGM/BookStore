@@ -1,5 +1,5 @@
-import { createStore, combineReducers } from 'redux';
-// import logger from 'redux-logger';
+import { combineReducers } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
 import bookReducer from './Book/reducer';
 import categoryReducer from './Categories/categories';
 
@@ -8,6 +8,6 @@ const reducers = combineReducers({
   categoryReducer,
 });
 
-const store = createStore(reducers);
+const store = configureStore(reducers);
 
 export default store;
