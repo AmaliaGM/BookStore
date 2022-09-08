@@ -1,7 +1,7 @@
 import { createStore, combineReducers } from 'redux';
 // import logger from 'redux-logger';
-import bookReducer from './book/reducer';
-import categoryReducer from './categories/categories';
+import bookReducer from './Book/reducer';
+import categoryReducer from './Categories/categories';
 
 const reducers = combineReducers({
   bookReducer,

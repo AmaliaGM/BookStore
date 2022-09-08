@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import AddNewBook from './bookInput';
+import AddNewBook from './BookInput';
 
 const Books = () => {
   const books = useSelector((store) => store.bookReducer);
-  console.log(books);
+  //  console.log(books);
   return (
     <div className="container">
       {
