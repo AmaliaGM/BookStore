@@ -5,6 +5,7 @@ import { categories } from '../Redux/Categories/categories';
 const Categories = () => {
   const dispatch = useDispatch();
   const store = useSelector((store) => store.categoryReducer);
+
   const handleSubmit = () => dispatch(categories());
   return (
     <div>
