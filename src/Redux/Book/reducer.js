@@ -11,13 +11,13 @@ export const deleteBook = (payload) => ({
 });
 const initialState = [
   {
-  bookTitle: 'Huckleberry Finn Adventures',
-  bookAuthor: 'Mark Twain',
+    bookTitle: 'Huckleberry Finn Adventures',
+    bookAuthor: 'Mark Twain',
   },
   {
     bookTitle: 'Tom Swayer Adventures',
     bookAuthor: 'Mark Twain',
-  }
+  },
 ];
 
 const bookReducer = (state = initialState, action) => {
