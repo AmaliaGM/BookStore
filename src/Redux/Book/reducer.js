@@ -14,7 +14,7 @@ const initialState = [];
 const bookReducer = (state = initialState, action) => {
   switch (action.type) {
     case DELETE_BOOK:
-      return state.pop((book) => (book.id === action.id));
+      return state.filter(({ id }) => id !== action.payload);
     case ADD_BOOKS:
       return [...state, action.payload];
     default:

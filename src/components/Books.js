@@ -1,12 +1,12 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import AddNewBook from './BookInput';
 import { deleteBook } from '../Redux/Book/reducer';
 
 const Books = () => {
   const books = useSelector((store) => store.bookReducer);
   //  console.log(books);
-
+  const dispatch = useDispatch();
   return (
     <div className="container">
       {
@@ -23,7 +23,7 @@ const Books = () => {
                   Comments
                 </span>
                 <span>
-                  <button onClick={deleteBook} type="button">Remove</button>
+                  <button onClick={() => dispatch(deleteBook(book.id))} type="button">Remove</button>
                 </span>
                 <span>
                   Edit
