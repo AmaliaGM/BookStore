@@ -1,10 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import AddNewBook from './BookInput';
+import { deleteBook } from '../Redux/Book/reducer';
 
 const Books = () => {
   const books = useSelector((store) => store.bookReducer);
   //  console.log(books);
+
   return (
     <div className="container">
       {
@@ -21,7 +23,7 @@ const Books = () => {
                   Comments
                 </span>
                 <span>
-                  Remove
+                  <button onClick={deleteBook} type="button">Remove</button>
                 </span>
                 <span>
                   Edit
