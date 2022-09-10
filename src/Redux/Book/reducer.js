@@ -1,6 +1,7 @@
 const ADD_BOOKS = 'bookstore/books/ADD_BOOKS';
 const DELETE_BOOK = 'bookstore/books/DELETE_BOOK';
-const baseURL = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/7Qdz6p3vp4ymDH6hhInP/books';
+const ADD_ALL_BOOKS = 'bookstore/books/ADD_ALL_BOOKS';
+//  const baseURL = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/7Qdz6p3vp4ymDH6hhInP/books';
 
 export const addBook = (payload) => ({
   type: ADD_BOOKS,
@@ -10,6 +11,11 @@ export const deleteBook = (payload) => ({
   type: DELETE_BOOK,
   payload,
 });
+const fetchBooks = (payload) => ({
+  type: ADD_ALL_BOOKS,
+  payload,
+});
+
 const initialState = [
   {
     id: 1231243,
@@ -29,50 +35,49 @@ const bookReducer = (state = initialState, action) => {
       return state.filter(({ id }) => id !== action.payload);
     case ADD_BOOKS:
       return [...state, action.payload];
+    case ADD_ALL_BOOKS:
+      return [...state, ...action.payload];
     default:
       return state;
   }
 };
 
-export const getBooksList = () => async (dispatch) => {
-  const booksList = await fetch(`${baseURL}`)
-    .then((response) => response.json());
-  const booksID = Object.keys(booksList);
-  const formatedBooks = [];
-  booksID.map((key) => formatedBooks.push({
-    id: key,
-    title: booksList[key][0].title,
-    category: booksList[key][0].category,
-  }));
-  dispatch(addBook(formatedBooks));
-};
+export const fetchData = async () => {
+  const data = await fetch('https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/L6NHScQcAZ5wrzaBikCo/books');
+  const response = await data.json();
+  console.log(response);
+  const bookArray = Object.entries(response);
+  const array = [];
+  bookArray.map(([key, value]) => {
+    const obj = {}
+    obj.id = key;
+    obj.title = value[0].title;
+    obj.author = value[0].author;
+    obj.category = value[0].category;
+    return array.push(obj);
+  })
+  console.log(array);
+  console.log(bookArray);
+  /* return dispatch => {
+    dispatch(fetchBooks(array));
+  } */
+ };
 
-export const postBook = (newBook) => async (dispatch) => {
-  await fetch(`${baseURL}`, {
+export const postData = async ({ id, bookTitle, bookAuthor }) => {
+  const data = await fetch('https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/L6NHScQcAZ5wrzaBikCo/books', {
     method: 'POST',
     body: JSON.stringify({
-      item_id: newBook.id,
-      title: newBook.title,
-      category: newBook.category,
-    }),
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    },
-  });
-  dispatch(addBook(newBook));
-};
-/*
-  deleteBook = (id) => async (dispatch) => {
-  await fetch(`${baseURL}/${id}`, {
-    method: 'DELETE',
-    body: JSON.stringify({
       item_id: id,
+      title: bookTitle,
+      author: bookAuthor,
+      category: 'adventure',
     }),
     headers: {
-      'Content-type': 'application/json; charset=UTF-8',
+      'Content-type': 'application/json',
     },
   });
-  dispatch(removeBook(id));
-}; */
+  const response = await data.text();
+  localStorage.setItem('items', JSON.stringify(response));
+};
 
 export default bookReducer;

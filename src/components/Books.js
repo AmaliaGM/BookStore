@@ -1,12 +1,17 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import AddNewBook from './BookInput';
-import { deleteBook } from '../Redux/Book/reducer';
+import { deleteBook, fetchData } from '../Redux/Book/reducer';
 
 const Books = () => {
-  const books = useSelector((store) => store.bookReducer);
-  //  console.log(books);
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchData());
+  }, []);
+  const books = useSelector((store) => store.bookReducer);
+   console.log('books components', books);
+
   return (
     <div className="container">
       {
