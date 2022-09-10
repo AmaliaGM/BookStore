@@ -1,12 +1,24 @@
-import React from 'react';
+/* eslint-disable linebreak-style */
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import AddNewBook from './BookInput';
-import { deleteBook } from '../Redux/Book/reducer';
+import { deleteBook, fetchData, fetchBooks } from '../Redux/Book/reducer';
 
 const Books = () => {
-  const books = useSelector((store) => store.bookReducer);
-  //  console.log(books);
   const dispatch = useDispatch();
+  useEffect(() => {
+    const booksData = async () => {
+      const response = await fetchData();
+
+      console.log('BOOKS', response);
+      dispatch(fetchBooks(response));
+    };
+
+    booksData();
+  }, []);
+  const books = useSelector((store) => store.bookReducer);
+  console.log('books components', books);
+
   return (
     <div className="container">
       {
@@ -15,8 +27,8 @@ const Books = () => {
             <div className="smallCont">
               <div className="Book">
                 <span className="Categorie">Adventures</span>
-                <span className="BookTitle">{book.bookTitle}</span>
-                <span className="Author">{book.bookAuthor}</span>
+                <span className="BookTitle">{book.title}</span>
+                <span className="Author">{book.author}</span>
               </div>
               <div className="TitleFoot">
                 <span className="Comments">

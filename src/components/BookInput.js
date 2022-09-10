@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addBook } from '../Redux/Book/reducer';
+import { addBook, postData } from '../Redux/Book/reducer';
 
 const AddNewBook = () => {
   const [bookTitle, setBookTitle] = useState('');
   const [bookAuthor, setBookAuthor] = useState('');
-
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const book = { id: new Date().getTime().toString(), bookTitle, bookAuthor };
     dispatch(addBook(book));
+    postData(book);
   };
+
   return (
     <div>
       <h2>Add New Book</h2>
