@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 const ADD_BOOKS = 'bookstore/books/ADD_BOOKS';
 const DELETE_BOOK = 'bookstore/books/DELETE_BOOK';
 const ADD_ALL_BOOKS = 'bookstore/books/ADD_ALL_BOOKS';
@@ -11,7 +12,8 @@ export const deleteBook = (payload) => ({
   type: DELETE_BOOK,
   payload,
 });
-const fetchBooks = (payload) => ({
+
+export const fetchBooks = (payload) => ({
   type: ADD_ALL_BOOKS,
   payload,
 });
@@ -19,13 +21,13 @@ const fetchBooks = (payload) => ({
 const initialState = [
   {
     id: 1231243,
-    bookTitle: 'Huckleberry Finn Adventures',
-    bookAuthor: 'Mark Twain',
+    title: 'Huckleberry Finn Adventures',
+    author: 'Mark Twain',
   },
   {
     id: 123445,
-    bookTitle: 'Tom Swayer Adventures',
-    bookAuthor: 'Mark Twain',
+    title: 'Tom Swayer Adventures',
+    author: 'Mark Twain',
   },
 ];
 
@@ -45,23 +47,19 @@ const bookReducer = (state = initialState, action) => {
 export const fetchData = async () => {
   const data = await fetch('https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/L6NHScQcAZ5wrzaBikCo/books');
   const response = await data.json();
-  console.log(response);
   const bookArray = Object.entries(response);
   const array = [];
   bookArray.map(([key, value]) => {
-    const obj = {}
+    const obj = {};
     obj.id = key;
     obj.title = value[0].title;
     obj.author = value[0].author;
     obj.category = value[0].category;
     return array.push(obj);
-  })
-  console.log(array);
-  console.log(bookArray);
-  /* return dispatch => {
-    dispatch(fetchBooks(array));
-  } */
- };
+  });
+
+  return array;
+};
 
 export const postData = async ({ id, bookTitle, bookAuthor }) => {
   const data = await fetch('https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/L6NHScQcAZ5wrzaBikCo/books', {
