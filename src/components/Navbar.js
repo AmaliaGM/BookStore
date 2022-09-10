@@ -7,10 +7,10 @@ const Navbar = () => (
       <h1 className="SiteName">Bookstore CMS</h1>
       <ul>
         <li>
-          <NavLink to="/">BOOKS</NavLink>
+          <NavLink className="liBooks" to="/">BOOKS</NavLink>
         </li>
         <li>
-          <NavLink to="/categories">CATEGORIES</NavLink>
+          <NavLink className="liCategories" to="/categories">CATEGORIES</NavLink>
         </li>
       </ul>
     </div>

@@ -15,11 +15,12 @@ const AddNewBook = () => {
   };
 
   return (
-    <div>
-      <h2>Add New Book</h2>
+    <div className="NewBookCont">
+      <h2 className="AddNewBook">Add New Book</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="BookTitle">
           <input
+            className="BookTitle"
             type="text"
             id="BookTitle"
             onChange={(e) => setBookTitle(e.target.value)}
@@ -28,13 +29,14 @@ const AddNewBook = () => {
           />
         </label>
         <input
+          className="Author"
           type="text"
           htmlFor="Book Author"
           required
           onChange={(e) => setBookAuthor(e.target.value)}
           placeholder="Author"
         />
-        <button type="submit">Add book</button>
+        <button className="AddButton" type="submit">Add book</button>
       </form>
     </div>
   );
